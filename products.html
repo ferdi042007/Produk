@@ -1,0 +1,2894 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Brexxy Offc - Produk Digital</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #00ffe7;
+      --secondary: #0f0;
+      --dark: #121212;
+      --darker: #0a0a0a;
+      --light: #fff;
+      --accent: #007a6e;
+      --card-bg: #1a1a1a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', 'Poppins', sans-serif;
+      background-color: var(--darker);
+      color: var(--light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 231, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 231, 0.05) 0%, transparent 20%);
+      background-size: 300px 300px;
+      position: relative;
+    }
+    
+    /* Floating background elements */
+    .floating-icons {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .floating-icon {
+      position: absolute;
+      font-size: 2rem;
+      color: rgba(0, 255, 231, 0.1);
+      animation: float 15s infinite linear;
+    }
+    
+    .floating-icon:nth-child(1) {
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    
+    .floating-icon:nth-child(2) {
+      top: 20%;
+      left: 90%;
+      animation-delay: -3s;
+    }
+    
+    .floating-icon:nth-child(3) {
+      top: 60%;
+      left: 15%;
+      animation-delay: -6s;
+    }
+    
+    .floating-icon:nth-child(4) {
+      top: 40%;
+      left: 80%;
+      animation-delay: -9s;
+    }
+    
+    .floating-icon:nth-child(5) {
+      top: 80%;
+      left: 70%;
+      animation-delay: -12s;
+    }
+    
+    .floating-icon:nth-child(6) {
+      top: 30%;
+      left: 40%;
+      animation-delay: -15s;
+    }
+    
+    header {
+      background: linear-gradient(90deg, rgba(18, 18, 18, 0.9) 0%, rgba(10, 10, 10, 0.9) 100%);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 255, 231, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-size: 28px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .logo i {
+      font-size: 24px;
+      animation: pulse 2s infinite;
+    }
+    
+    /* Search bar */
+    .search-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    
+    .search-box {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: 50px;
+      background: rgba(26, 26, 26, 0.7);
+      border: 1px solid rgba(0, 255, 231, 0.3);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-box:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 255, 231, 0.3);
+    }
+    
+    .search-box::placeholder {
+      color: #aaa;
+    }
+    
+    /* Banner Carousel */
+    .banner-carousel {
+      width: 100%;
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .banner-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    
+    .banner-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    
+    .banner-slide:nth-child(1) {
+      background: linear-gradient(90deg, #121212 0%, transparent 100%), url('https://files.catbox.moe/11raaa.jpg') center/cover;
+    }
+    
+    .banner-slide:nth-child(2) {
+      background: linear-gradient(90deg, #121212 0%, transparent 100%), url('https://files.catbox.moe/tqhy6t.jpg') center/cover;
+    }
+    
+    .banner-slide:nth-child(3) {
+      background: linear-gradient(90deg, #121212 0%, transparent 100%), url('https://files.catbox.moe/mn17y1.jpg') center/cover;
+    }
+    
+    .banner-slide:nth-child(4) {
+      background: linear-gradient(90deg, #121212 0%, transparent 100%), url('https://files.catbox.moe/ecp9cb.jpg') center/cover;
+    }
+    
+    .banner-content {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .banner-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    
+    .banner-content p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+    
+    .banner-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+      background: var(--primary);
+      transform: scale(1.2);
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 30px 0 20px;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0 20px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    /* Modern Category Buttons */
+    .kategori-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 30px auto 10px;
+      border-radius: 15px;
+      background: rgba(26, 26, 26, 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 231, 0.2);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .kategori-button {
+      background: linear-gradient(135deg, #1a1a1a, #121212);
+      color: var(--primary);
+      border: 1px solid rgba(0, 255, 231, 0.3);
+      padding: 12px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .kategori-button i {
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .kategori-button:hover {
+      background: linear-gradient(135deg, #00ffe7, #00b3a0);
+      color: #000;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 255, 231, 0.3);
+    }
+    
+    .kategori-button:hover i {
+      transform: rotate(10deg);
+    }
+    
+    .kategori-button.active {
+      background: linear-gradient(135deg, #00ffe7, #00b3a0);
+      color: #000;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 255, 231, 0.5);
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 20px;
+      max-width: 1300px;
+      margin: 20px auto;
+    }
+    
+    .product-card {
+      background: linear-gradient(145deg, #1a1a1a, #121212);
+      border: 1px solid #333;
+      border-radius: 15px;
+      overflow: hidden;
+      padding: 20px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #00ffe7, #0f0, #00ffe7);
+      z-index: -1;
+      border-radius: 17px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 30px rgba(0, 255, 231, 0.2);
+    }
+    
+    .product-card:hover::before {
+      opacity: 1;
+    }
+    
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      transition: transform 0.5s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .product-card:hover img {
+      transform: scale(1.03);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .product-card h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+    
+    .product-card:hover h3 {
+      color: var(--secondary);
+    }
+    
+    .product-card p {
+      margin: 8px 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #ddd;
+    }
+    
+    .price {
+      color: var(--secondary);
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 10px 0;
+      display: block;
+    }
+    
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .buy-button, .review-button {
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+    
+    .buy-button {
+      background: linear-gradient(to right, #00ffe7, #00b3a0);
+      color: #000;
+      border: none;
+    }
+    
+    .buy-button:hover {
+      background: linear-gradient(to right, #0f0, #00ffaa);
+      box-shadow: 0 0 15px rgba(0, 255, 231, 0.5);
+      transform: translateY(-3px);
+    }
+    
+    .review-button {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    
+    .review-button:hover {
+      background: var(--primary);
+      color: #000;
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(0, 255, 231, 0.3);
+    }
+    
+    footer {
+      background-color: var(--dark);
+      text-align: center;
+      padding: 25px 15px;
+      color: #999;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      border-top: 1px solid rgba(0, 255, 231, 0.1);
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .banner-carousel {
+        height: 200px;
+      }
+      
+      .banner-content h2 {
+        font-size: 2rem;
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .banner-carousel {
+        height: 180px;
+      }
+      
+      .banner-content h2 {
+        font-size: 1.7rem;
+      }
+      
+      .banner-content p {
+        font-size: 1rem;
+      }
+      
+      .kategori-container {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 15px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) transparent;
+      }
+      
+      .kategori-container::-webkit-scrollbar {
+        height: 6px;
+      }
+      
+      .kategori-container::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 3px;
+      }
+      
+      .kategori-button {
+        flex-shrink: 0;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .banner-carousel {
+        height: 150px;
+      }
+      
+      .banner-content h2 {
+        font-size: 1.4rem;
+      }
+      
+      .banner-content p {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 1.7rem;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+      
+      .product-card {
+        padding: 15px;
+      }
+      
+      header {
+        padding: 15px;
+      }
+      
+      .logo {
+        font-size: 1.3rem;
+      }
+    }
+    
+    /* Customer Service Button */
+    .cs-button {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #00ffe7, #00b3a0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0, 255, 231, 0.4);
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .cs-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 20px rgba(0, 255, 231, 0.6);
+      background: linear-gradient(135deg, #00ffd9, #00c8b0);
+    }
+    
+    .cs-button i {
+      font-size: 32px;
+      color: #0a0a0a;
+      transition: transform 0.3s ease;
+    }
+    
+    .cs-button:hover i {
+      transform: scale(1.2);
+    }
+    
+    .cs-tooltip {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(10, 10, 10, 0.9);
+      color: #00ffe7;
+      padding: 8px 15px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      border: 1px solid #00ffe7;
+    }
+    
+    .cs-button:hover .cs-tooltip {
+      opacity: 1;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 231, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(0, 255, 231, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 231, 0);
+      }
+    }
+    
+    .cs-button::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      z-index: -1;
+    }
+    
+    /* Modal Customer Service */
+    .cs-modal {
+      display: none;
+      position: fixed;
+      bottom: 120px;
+      left: 40px;
+      width: 300px;
+      background-color: #121212;
+      border: 1px solid #00ffe7;
+      border-radius: 15px;
+      z-index: 1001;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+    
+    .cs-modal-header {
+      background: linear-gradient(90deg, #00ffe7, #007a6e);
+      padding: 15px;
+      color: #0a0a0a;
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cs-modal-close {
+      cursor: pointer;
+      font-size: 22px;
+    }
+    
+    .cs-modal-body {
+      padding: 20px;
+    }
+    
+    .cs-option {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      margin: 10px 0;
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .cs-option:hover {
+      background-color: #222;
+      border-color: #00ffe7;
+      transform: translateX(5px);
+    }
+    
+    .cs-option i {
+      font-size: 24px;
+      margin-right: 15px;
+      color: #00ffe7;
+    }
+    
+    .cs-option .cs-text {
+      flex-grow: 1;
+    }
+    
+    .cs-option .cs-text h4 {
+      margin: 0;
+      color: #00ffe7;
+    }
+    
+    .cs-option .cs-text p {
+      margin: 5px 0 0;
+      color: #aaa;
+      font-size: 14px;
+    }
+    
+    .cs-option .arrow {
+      font-size: 20px;
+      color: #00ffe7;
+    }
+    
+    /* Panel Order Modal */
+    .order-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .order-modal-content {
+      background: var(--darker);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+      animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    @keyframes modalAppear {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .order-modal-header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 20px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .order-modal-close {
+      cursor: pointer;
+      font-size: 28px;
+      transition: transform 0.3s;
+    }
+    
+    .order-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .order-modal-body {
+      padding: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 14px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 10px rgba(0, 255, 231, 0.3);
+    }
+    
+    .form-control option {
+      background: #1a1a1a;
+    }
+    
+    .submit-button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+    
+    .submit-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 231, 0.4);
+    }
+    
+    .order-summary {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 25px;
+      border-left: 3px solid var(--primary);
+    }
+    
+    .order-summary h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .order-summary p {
+      margin: 10px 0;
+      color: #ddd;
+    }
+    
+    .order-summary .highlight {
+      color: var(--secondary);
+      font-weight: bold;
+    }
+    
+    /* Floating notification */
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      background: #00b3a0;
+      color: #000;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      z-index: 3000;
+      transform: translateX(150%);
+      transition: transform 0.5s ease;
+    }
+    
+    .notification.show {
+      transform: translateX(0);
+    }
+    
+    /* Package Selection Modal */
+    .package-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .package-modal-content {
+      background: var(--darker);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+      animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .package-modal-header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 20px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .package-modal-close {
+      cursor: pointer;
+      font-size: 28px;
+      transition: transform 0.3s;
+    }
+    
+    .package-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .package-modal-body {
+      padding: 30px;
+    }
+    
+    .package-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .package-option {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .package-option:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 231, 0.2);
+    }
+    
+    .package-option.selected {
+      background: rgba(0, 255, 231, 0.1);
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 255, 231, 0.3);
+    }
+    
+    .package-option h4 {
+      color: var(--primary);
+      margin: 0 0 5px 0;
+      font-size: 1.2rem;
+    }
+    
+    .package-option p {
+      color: #ddd;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    
+    .package-option .price {
+      color: var(--secondary);
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    
+    .package-continue {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .package-continue:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 231, 0.4);
+    }
+    
+    .package-continue:disabled {
+      background: #555;
+      color: #999;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    /* Mobile Legends Modal */
+    .mobilelegend-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .mobilelegend-modal-content {
+      background: var(--darker);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+      animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .mobilelegend-modal-header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 20px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .mobilelegend-modal-close {
+      cursor: pointer;
+      font-size: 28px;
+      transition: transform 0.3s;
+    }
+    
+    .mobilelegend-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .mobilelegend-modal-body {
+      padding: 30px;
+    }
+    
+    /* PUBG Modal */
+    .pubg-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .pubg-modal-content {
+      background: var(--darker);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+      animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .pubg-modal-header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 20px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .pubg-modal-close {
+      cursor: pointer;
+      font-size: 28px;
+      transition: transform 0.3s;
+    }
+    
+    .pubg-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .pubg-modal-body {
+      padding: 30px;
+    }
+    
+    /* E-Wallet Modal */
+    .ewallet-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .ewallet-modal-content {
+      background: var(--darker);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+      animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .ewallet-modal-header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 20px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .ewallet-modal-close {
+      cursor: pointer;
+      font-size: 28px;
+      transition: transform 0.3s;
+    }
+    
+    .ewallet-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .ewallet-modal-body {
+      padding: 30px;
+    }
+    
+    /* Free Fire Modal */
+    .freefire-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .freefire-modal-content {
+      background: var(--darker);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+      animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .freefire-modal-header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 20px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .freefire-modal-close {
+      cursor: pointer;
+      font-size: 28px;
+      transition: transform 0.3s;
+    }
+    
+    .freefire-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .freefire-modal-body {
+      padding: 30px;
+    }
+    
+    /* Other Games Modal */
+    .othergames-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .othergames-modal-content {
+      background: var(--darker);
+      width: 90%;
+      max-width: 500px;
+      border-radius: 15px;
+      border: 2px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 231, 0.3);
+      animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .othergames-modal-header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      padding: 20px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .othergames-modal-close {
+      cursor: pointer;
+      font-size: 28px;
+      transition: transform 0.3s;
+    }
+    
+    .othergames-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    
+    .othergames-modal-body {
+      padding: 30px;
+    }
+</style>
+</head>
+<body>
+  <!-- Floating background elements -->
+  <div class="floating-icons">
+    <div class="floating-icon"><i class="fas fa-robot"></i></div>
+    <div class="floating-icon"><i class="fas fa-globe"></i></div>
+    <div class="floating-icon"><i class="fas fa-cog"></i></div>
+    <div class="floating-icon"><i class="fas fa-code"></i></div>
+    <div class="floating-icon"><i class="fas fa-server"></i></div>
+    <div class="floating-icon"><i class="fas fa-mobile-alt"></i></div>
+  </div>
+  
+  <header>
+    <a class="logo" href="#"><i class="fas fa-bolt"></i> Brexxy Offc</a>
+  </header>
+  
+  <!-- Banner Carousel -->
+  <div class="banner-carousel">
+    <div class="banner-slide active">
+      <div class="banner-content">
+        <h2>Solusi Digital Terbaik</h2>
+        <p>Produk inovatif untuk kebutuhan bisnis digital Anda</p>
+      </div>
+    </div>
+    <div class="banner-slide">
+      <div class="banner-content">
+        <h2>Bot WhatsApp Premium</h2>
+        <p>Otomasi bisnis dengan fitur lengkap dan terupdate</p>
+      </div>
+    </div>
+    <div class="banner-slide">
+      <div class="banner-content">
+        <h2>Web Payment System</h2>
+        <p>Solusi pembayaran otomatis untuk bisnis online</p>
+      </div>
+    </div>
+    <div class="banner-slide">
+      <div class="banner-content">
+        <h2>Jasa Pembuatan Website</h2>
+        <p>Website profesional untuk meningkatkan kepercayaan pelanggan</p>
+      </div>
+    </div>
+    
+    <div class="banner-indicators">
+      <div class="indicator active" data-slide="0"></div>
+      <div class="indicator" data-slide="1"></div>
+      <div class="indicator" data-slide="2"></div>
+      <div class="indicator" data-slide="3"></div>
+    </div>
+  </div>
+  
+  <h2 class="section-title">Produk Kami</h2>
+  
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" class="search-box" placeholder="Cari produk..." id="searchInput">
+  </div>
+  
+  <!-- Modern Category Buttons -->
+  <div class="kategori-container">
+    <button class="kategori-button active" data-kategori="semua">
+      <i class="fas fa-boxes"></i> Semua Produk
+    </button>
+    <button class="kategori-button" data-kategori="sewa">
+      <i class="fas fa-robot"></i> Sewa Bot
+    </button>
+    <button class="kategori-button" data-kategori="script">
+      <i class="fas fa-file-code"></i> Script Web Payment
+    </button>
+    <button class="kategori-button" data-kategori="sc">
+      <i class="fab fa-whatsapp"></i> Script Bot WhatsApp
+    </button>
+    <button class="kategori-button" data-kategori="wa">
+      <i class="fas fa-id-card"></i> Nokos All-Sosmed
+    </button>
+    <button class="kategori-button" data-kategori="web">
+      <i class="fas fa-laptop-code"></i> Jasa Pembuatan Website
+    </button>
+    <button class="kategori-button" data-kategori="logo">
+      <i class="fas fa-palette"></i> Logo Jb
+    </button>
+    <button class="kategori-button" data-kategori="rename">
+      <i class="fas fa-font"></i> Jasa Rename Website
+    </button>
+    <button class="kategori-button" data-kategori="panel">
+      <i class="fas fa-server"></i> Panel perodactyl
+    </button>
+    <button class="kategori-button" data-kategori="ewalet">
+      <i class="fas fa-wallet"></i> Top Up E-Walet
+    </button>
+    <button class="kategori-button" data-kategori="game">
+      <i class="fas fa-gamepad"></i> Top Up All Game
+    </button>
+  </div>
+  
+  <section id="produk">
+    <div class="products-grid">
+      <!-- Product cards -->
+      <div class="product-card" data-harga="5000" data-id="sewa-bot" data-kategori="sewa" data-nama="Sewa Bot Pushkontak">
+        <img alt="Sewa Bot" src="https://img1.pixhost.to/images/6157/605953616_skyzopedia.jpg"/>
+        <h3>Sewa Bot Pushkontak</h3>
+        <p>Fitur Bot : 50 Fitur</p>
+        <p>Bot Pushkontak </p>
+        <p>Menu Fitur</p>
+        <p>- Pushkontak</p>
+        <p>- Jaga Grup</p>
+        <p>- Jpm All Grup Jb</p>
+        <p>- produk</p>
+        <p>- Jasa Post</p>
+        <p>Lihat Fitur Langkap Bisa Klik Tombol Riverview Produk</p>
+        <span class="price">Rp 5.000 /7 Hari</span>
+        <span class="price">Rp 10.000 /bulan</span>
+        <span class="price">Rp 15.000 /Permanen</span>
+        <span class="price">Rp 20.000 /Permanen + Free Sc</span>
+        <div class="buttons-container">
+          <button class="buy-button sewa-bot-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+          <a class="review-button" href="https://www.youtube.com/@BrexyyOfficial" target="_blank"><i class="fas fa-play-circle"></i> Riverview Produk</a>
+        </div>
+      </div>
+      <!-- Repeated product cards -->
+      <div class="product-card" data-harga="5.000" data-id="sewa-bot" data-kategori="sewa" data-nama="Sewa Bot Premium">
+        <img alt="Sewa Bot" src="https://img1.pixhost.to/images/6157/605953616_skyzopedia.jpg"/>
+        <h3>Sewa Bot Storev1</h3>
+        <p>Sewa Bot Store V1 </p>
+        <p>Menu Fitur</p>
+        <p>- Pushkontak</p>
+        <p>- Jaga Grup</p>
+        <p>- Jpm All Grup Jb</p>
+        <p>- produk</p>
+        <p>- Payment</p>
+        <p>- Jasa Post</p>
+        <p>- List Fee Mc</p>
+        <p>Lihat Fitur Langkap Bisa Klik Tombol Riverview Produk</p>
+        <span class="price">Rp 5.000 /7 Hari</span>
+        <span class="price">Rp 10.000 /bulan</span>
+        <span class="price">Rp 15.000 /Permanen</span>
+        <span class="price">Rp 20.000 /Permanen + Free Sc</span>
+        <div class="buttons-container">
+          <button class="buy-button sewa-bot-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+          <a class="review-button" href="https://www.youtube.com/@BrexyyOfficial" target="_blank"><i class="fas fa-play-circle"></i> Riverview Produk</a>
+        </div>
+      </div>
+      <div class="product-card" data-harga="5000" data-id="sewa-bot" data-kategori="sewa" data-nama="Sewa Bot Bug">
+        <img alt="Sewa Bot" src="https://img1.pixhost.to/images/6157/605953616_skyzopedia.jpg"/>
+        <h3>Sewa Bot Bug</h3>
+        <p>Bot Bug </p>
+        <p>Menu Fitur</p>
+        <p>- Kenon</p>
+        <p>- Crasher</p>
+        <p>- Invisible</p>
+        <p>- Menu Full Buton</p>
+        <p>- Paymet</p>
+        <p>- Murbug</p>
+        <p>Lihat Fitur Langkap Bisa Klik Tombol Riverview Produk</p>
+        <span class="price">Rp 5.000 /7 Hari</span>
+        <span class="price">Rp 10.000 /bulan</span>
+        <span class="price">Rp 15.000 /Permanen</span>
+        <span class="price">Rp 20.000 /Permanen + Free Sc</span>
+        <div class="buttons-container">
+          <button class="buy-button sewa-bot-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+          <a class="review-button" href="https://www.youtube.com/@BrexyyOfficial" target="_blank"><i class="fas fa-play-circle"></i> Riverview Produk</a>
+        </div>
+      </div>
+      <div class="product-card" data-harga="10000" data-id="script-payment" data-kategori="script" data-nama="Script Web Payment">
+        <img alt="Script Payment" src="https://img1.pixhost.to/images/6158/605958242_skyzopedia.jpg"/>
+        <h3>Script Web Payment</h3>
+        <p>Website pembayaran  dengan fitur Qris, Dana, Gopay, Ovo, Bank.</p>
+        <span class="price">Sc Saja : Rp 10.000</span>
+        <span class="price">Siap Pakai: Rp 20.000</span>
+        <p> Masi Banyak Fiturnya, Tekan Riverview Untuk Lihat Fitur Lengkap</p>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+          <a class="review-button" href="https://www.youtube.com/@BrexyyOfficial" target="_blank"><i class="fas fa-play-circle"></i> Riverview Produk</a>
+        </div>
+      </div>
+      <div class="product-card" data-harga="7000" data-id="sc" data-kategori="sc" data-nama="Script Bot Pushkontak">
+        <img alt="Bot WhatsApp" src="https://img1.pixhost.to/images/6157/605953619_skyzopedia.jpg"/>
+        <h3>Script Bot Pushkontak Anti Kenon</h3>
+        <p>- Bot WhatsApp fitur</p>
+        <p>- Tampilam Menu No Buton</p>
+        <p>- Fitur 50×</p>
+        <p>- Bisa Pushkontak Sepuasnya</p>
+        <p>- Bisa Jaga Grup Dari Link Gc Lain</p>
+        <p>- Fitur Welcome</p>
+        <p> Masi Banyak Fiturnya, Tekan Riverview Untuk Lihat Fitur Lengkap</p>
+        <span class="price">Rp 149.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+          <a class="review-button" href="https://www.youtube.com/@BrexyyOfficial" target="_blank"><i class="fas fa-play-circle"></i> Riverview Produk</a>
+        </div>
+      </div>
+      <div class="product-card" data-harga="10000" data-id="sc" data-kategori="sc" data-nama="Script Bot Bug">
+        <img alt="Bot WhatsApp" src="https://img1.pixhost.to/images/6157/605953619_skyzopedia.jpg"/>
+        <h3>Script Bot Bug</h3>
+        <p>- Bot Bug</p>
+        <p>- Tampilam Menu Buton</p>
+        <p>- Fitur 50×</p>
+        <p>- Bisa Bug Sepuasnya</p>
+        <p>- Bisa Open Murbug</p>
+        <p>- Bug Jamin No Kaleng'</p>
+        <p> Masi Banyak Fiturnya, Tekan Riverview Untuk Lihat Fitur Lengkap</p>
+        <span class="price">Rp 1.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+          <a class="review-button" href="https://www.youtube.com/@BrexyyOfficial" target="_blank"><i class="fas fa-play-circle"></i> Riverview Produk</a>
+        </div>
+      </div>
+      <div class="product-card" data-harga="10.000" data-id="sc" data-kategori="sc" data-nama="Script Bot Store">
+        <img alt="Bot WhatsApp" src="https://img1.pixhost.to/images/6157/605953619_skyzopedia.jpg"/>
+        <h3>Script Bot Store</h3>
+        <p>Bot WhatsApp Fitur Store.</p>
+        <p>- Menu Tampilan Buton</p>
+        <p>- Promosi Otomatis</p>
+        <p>- Payment (Qris,Dana,Ovo,Gopay Dan Bank)</p>
+        <p>- Fitur Jaga Grup</p>
+        <p>- Bisa Pushkontak</p>
+        <p>- Bisa Push Member Grup</p>
+        <p> Masi Banyak Fiturnya, Tekan Riverview Untuk Lihat Fitur Lengkap</p>
+        <span class="price">Rp 10.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+          <a class="review-button" href="https://www.youtube.com/@BrexyyOfficial" target="_blank"><i class="fas fa-play-circle"></i> Riverview Produk</a>
+        </div>
+      </div>
+      <div class="product-card" data-harga="10000" data-id="wa" data-kategori="wa" data-nama="Nokos Whatsapp">
+        <img alt="Bot WhatsApp" src="https://img1.pixhost.to/images/6202/606758486_fr3hosting.jpg"/>
+        <h3>Nokos Whatsapp</h3>
+        <p>Nomer Maasih Freshh</p>
+        <p>- Free Tutor amanin</p>
+        <p>- Free Garanri Replay x1</p>
+        <span class="price">Rp 10.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      <div class="product-card" data-harga="10000" data-id="wa" data-kategori="wa" data-nama="Nokos Telegram">
+        <img alt="Bot WhatsApp" src="https://img1.pixhost.to/images/6202/606758483_fr3hosting.jpg"/>
+        <h3>Nokos Telegram</h3>
+        <p>Nomer Maasih Freshh</p>
+        <p>- Free Tutor amanin</p>
+        <p>- Free Garanri Replay x1</p>
+        <span class="price">Rp 10.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      <div class="product-card" data-harga="10000" data-id="rename" data-kategori="rename" data-nama="Jasa Rename Website">
+        <img alt="rename" src="https://img1.pixhost.to/images/6202/606759043_fr3hosting.jpg"/>
+        <h3>Jasa Rename Website</h3>
+        <p>- Website 100% Milik Anda</p>
+        <p>- Ubah Nama Website Jadi Nama Anda</p>
+        <p>- Ubah Poto Do Website Jadi Poto Anda</p>
+        <p> Dan Lain Lainnya </p>
+        <span class="price">Harga : Rp 5.000 > Website easy</span>
+        <span class="price">Harga : Rp 10.000 > Website Medium</span>
+        <span class="price">Harga : Rp 15.000 > Website Hard</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      <div class="product-card" data-harga="10000" data-id="web" data-kategori="web" data-nama="Jasa Pembuatan Website">
+        <img alt="Bot WhatsApp" src="https://img1.pixhost.to/images/6202/606759044_fr3hosting.jpg"/>
+        <h3>Jasa Pembuatan Website</h3>
+        <p>- Membuat Website Produk</p>
+        <p>- Membuat Website Pembayaran</p>
+        <p>- Membuat Website porto Profil</p>
+        <span class="price">Harga : Rp 10.000-Rp 20.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      <!-- ... (other product cards) ... -->
+<div class="product-card" data-harga="5000" data-id="Logo Jb Maskot" data-kategori="logo" data-nama="Logo Jb Maskot">
+    <img alt="" src="https://files.catbox.moe/z4mnie.jpg"/>
+    <h3> Jb Maskot</h3>
+    <p>- Membuat Logo Jb Maskot</p>
+    <p>- Membuat Logo jb 3D</p>
+    <p>- Membuat Logo JB AI</p>
+    <p>- Bisa Request</p>
+    <span class="price">Rp 5.000/Rp 10.000</span>
+    <div class="buttons-container">
+        <a class="review-button" href="logo1.html"><i class="fas fa-play-circle"></i>Klik Disini Untuk Memilih Logo</a>
+    </div>
+</div>
+      <div class="product-card" data-harga="5000" data-id="Logo Jb Maskot" data-kategori="logo" data-nama="Logo Jb Maskot">
+    <img alt="" src="https://files.catbox.moe/88k6jy.jpg"/>
+    <h3>LOGO JB KEREN</h3>
+    <p>- Membuat Logo ALL TRX</p>
+    <p>- Membuat Logo LIST REKBER</p>
+    <p>- Membuat Logo PRODUK</p>
+    <span class="price">Rp 5.000/Rp 10.000</span>
+    <div class="buttons-container">
+        <a class="review-button" href="logo2.html"><i class="fas fa-play-circle"></i> Klik Disini Untuk Memilih Logo</a>
+    </div>
+</div>
+    
+      <!-- Mobile Legends Top Up Product -->
+      <div class="product-card" data-harga="5000" data-id="Top Up Mobile Legend" data-kategori="game" data-nama="Top Up Mobile Legend">
+        <img alt="Mobile Legends" src="https://files.catbox.moe/bmyhw9.jpg"/>
+        <h3>Top Up Mobile Legends</h3>
+        <p>Top Up Diamond Mobile Legends dengan harga termurah</p>
+        <p>- Proses cepat 1-5 menit</p>
+        <p>- Harga bersaing</p>
+        <p>- Garansi 100%</p>
+        <span class="price">Mulai dari Rp 5.000</span>
+        <div class="buttons-container">
+          <button class="buy-button mobilelegend-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      
+      <!-- PUBG Top Up Product -->
+      <div class="product-card" data-harga="5000" data-id="Top Up Pubg" data-kategori="game" data-nama="Top Up Pubg">
+        <img alt="PUBG Mobile" src="https://files.catbox.moe/bzdv3b.jpg"/>
+        <h3>Top Up PUBG Mobile</h3>
+        <p>Top Up UC PUBG Mobile dengan harga termurah</p>
+        <p>- Proses cepat 1-5 menit</p>
+        <p>- Harga bersaing</p>
+        <p>- Garansi 100%</p>
+        <span class="price">Mulai dari Rp 5.000</span>
+        <div class="buttons-container">
+          <button class="buy-button pubg-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      
+      <!-- E-Wallet Top Up Product -->
+      <div class="product-card" data-harga="5000" data-id="ewalet" data-kategori="ewalet" data-nama="Top Up E-Wallet">
+        <img alt="Top Up E-Wallet" src="https://files.catbox.moe/xsljlx.jpg"/>
+        <h3>Top Up E-Wallet</h3>
+        <p>Top Up Dana, OVO, Gopay dengan harga terjangkau</p>
+        <p>- Proses cepat 1-5 menit</p>
+        <p>- Terjamin Aman</p>
+        <p>- Garansi 100%</p>
+        <span class="price">Mulai dari Rp 5.000</span>
+        <div class="buttons-container">
+          <button class="buy-button ewallet-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      
+      <!-- Free Fire Top Up Product -->
+      <div class="product-card" data-harga="1000" data-id="game" data-kategori="game" data-nama="Top Up Free Fire">
+        <img alt="Top Up Free Fire" src="https://files.catbox.moe/dudljz.jpg"/>
+        <h3>Top Up Free Fire</h3>
+        <p>Top Up Diamond Free Fire dengan harga termurah</p>
+        <p>- Proses cepat 1-5 menit</p>
+        <p>- Harga bersaing</p>
+        <p>- Garansi 100%</p>
+        <span class="price">Mulai dari Rp 1.000</span>
+        <div class="buttons-container">
+          <button class="buy-button freefire-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      
+      <!-- Other Games Top Up Product -->
+      <div class="product-card" data-harga="5000" data-id="game" data-kategori="game" data-nama="List Top Up Game Lainnya">
+        <img alt="List Top Up Game Lainnya" src="https://files.catbox.moe/1lqg2c.jpg"/>
+        <h3>List Top Up Game Lainnya</h3>
+        <p>Top Up berbagai game populer dengan harga termurah</p>
+        <p>- Mobile Legends, PUBG, Valorant, dll</p>
+        <p>- Proses cepat 1-5 menit</p>
+        <p>- Garansi 100%</p>
+        <span class="price">Mulai dari Rp 5.000</span>
+        <div class="buttons-container">
+          <button class="buy-button othergames-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      
+      <!-- Panel perodactyl Product -->
+      <div class="product-card" data-harga="5000" data-id="panel-perodactyl" data-kategori="panel" data-nama="Panel perodactyl">
+        <img alt="Panel perodactyl" src="https://img1.pixhost.to/images/6227/607147572_fr3hosting.jpg"/>
+        <h3>Panel perodactyl</h3>
+        <p>- Bisa Run Script Bot</p>
+        <p>- Membuat Server Minicraft</p>
+        <p>- Spek Ram 16 core 8</p>
+        <p>- Anti Delay </p>
+        <p>- Anti Colong Script</p>
+        <span class="price">Harga : Rp 1.000-Rp 10.000</span>
+        <div class="buttons-container">
+          <button class="buy-button buy-panel-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      
+      <div class="product-card" data-harga="10000" data-id="Reseler Panel" data-kategori="panel" data-nama="Reseler Panel">
+        <img alt="Script Payment" src="https://img1.pixhost.to/images/6227/607147570_fr3hosting.jpg"/>
+        <h3>Reseler Panel</h3>
+           <p>BISA CREATE PANEL SEPUASNYA</p>
+        <p>CREATE PANEL DARI 1-10GB DAN UNLI</p>
+        <p>BISA OPEN SEWA BOT PUSH/BUG</p>
+        <p>BISA OPEN RESELLER PANEL</p>
+        <p>ANTI DELAY</p>
+        <p>SERVER TERJAGA 100%</p>
+        <p>BISA BALMOD ( ASAL USAHA</p>
+        <span class="price">Sc Saja : Rp 10.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Beli Sekarang</button>
+        </div>
+      </div>
+      <div class="product-card" data-harga="15000" data-id="Admin Panel" data-kategori="panel" data-nama="Admin Panel">
+        <img alt="Script Payment" src="https://img1.pixhost.to/images/6227/607147884_fr3hosting.jpg"/>
+        <h3>Admin Panel</h3>
+        <p>BISA CREATE PANEL SEPUASNYA</p>
+        <p>CREATE PANEL DARI 1-10GB DAN UNLI</p>
+        <p>BISA OPEN SEWA BOT PUSH/BUG</p>
+        <p>BISA OPEN RESELLER PANEL</p>
+        <p>DIKASI 2 SC FREE ( 2 SC KHUSUS ADP )</p>
+        <p>ANTI DELAY</p>
+        <p>SERVER TERJAGA 100%</p>
+        <p>BISA BALMOD ( ASAL USAHA</p>
+        <span class="price">Harga :Rp 15.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      <div class="product-card" data-harga="15000" data-id="Patner Panel" data-kategori="panel" data-nama="Patner Pamel">
+        <img alt="Panel" src="https://img1.pixhost.to/images/6227/607147567_fr3hosting.jpg"/>
+        <h3>Patner Panel</h3>
+   <p>BISA CREATE PANEL SEPUASNYA</p>
+        <p>CREATE PANEL DARI 1-10GB DAN UNLI</p>
+        <p>BISA OPEN SEWA BOT PUSH/BUG</p>
+        <p>BISA OPEN RESELLER PANEL</p>
+        <p>DIKASI 2 SC FREE</p>
+        <p>ANTI DELAY</p>
+        <p>SERVER TERJAGA 100%</p>
+        <p>BISA BALMOD ( ASAL USAHA</p>
+        <span class="price">Harga: Rp 15.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      <div class="product-card" data-harga="20000" data-id="Owner Panel" data-kategori="panel" data-nama="Script Web Payment">
+        <img alt="Script Payment" src="https://img1.pixhost.to/images/6227/607147565_fr3hosting.jpg"/>
+        <h3>Owner Panel</h3>
+           <p>BISA CREATE PANEL SEPUASNYA</p>
+        <p>CREATE PANEL DARI 1-10GB DAN UNLI</p>
+        <p>BISA OPEN SEWA BOT PUSH/BUG</p>
+        <p>BISA OPEN RESELLER PANEL</p>
+        <p>DIKASI 2 SC FREE</p>
+        <p>ANTI DELAY</p>
+        <p>SERVER TERJAGA 100%</p>
+        <p>BISA BALMOD ( ASAL USAHA</p>
+        <span class="price">Harga: Rp 20.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+      <div class="product-card" data-harga="25000" data-id="Tangan Kanan" data-kategori="panel" data-nama="Tangan Kanan">
+        <img alt="Tangan Panel" src="https://img1.pixhost.to/images/6227/607147571_fr3hosting.jpg"/>
+        <h3>Tangan Kanan</h3>
+           <p>BISA CREATE PANEL SEPUASNYA</p>
+        <p>CREATE PANEL DARI 1-10GB DAN UNLI</p>
+        <p>BISA OPEN SEWA BOT PUSH/BUG</p>
+        <p>BISA OPEN RESELLER PANEL</p>
+        <p>DIKASI 2 SC FREE</p>
+        <p>ANTI DELAY</p>
+        <p>SERVER TERJAGA 100%</p>
+        <p>BISA BALMOD ( ASAL USAHA</p>
+        <span class="price">Harga: Rp 25.000</span>
+        <div class="buttons-container">
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Mobile Legends Modal -->
+  <div class="mobilelegend-modal" id="mobilelegendModal">
+    <div class="mobilelegend-modal-content">
+      <div class="mobilelegend-modal-header">
+        <span>Top Up Mobile Legends</span>
+        <span class="mobilelegend-modal-close">&times;</span>
+      </div>
+      <div class="mobilelegend-modal-body">
+        <form id="mobilelegendForm">
+          <div class="form-group">
+            <label for="mlIdGame">ID Game</label>
+            <input type="text" id="mlIdGame" class="form-control" placeholder="Masukkan ID Game" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="mlServerId">ID Server</label>
+            <input type="text" id="mlServerId" class="form-control" placeholder="Masukkan ID Server" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="mlNamaAkun">Nama Akun</label>
+            <input type="text" id="mlNamaAkun" class="form-control" placeholder="Masukkan nama akun" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="mlDiamondPackage">Pilih Jumlah Diamond</label>
+            <select id="mlDiamondPackage" class="form-control" required>
+              <option value="">Pilih jumlah diamond...</option>
+              <option value="5dm">5 DM</option>
+              <option value="14dm">14 DM</option>
+              <option value="28dm">28 DM</option>
+              <option value="42dm">42 DM</option>
+              <option value="56dm">56 DM</option>
+              <option value="70dm">70 DM</option>
+              <option value="85dm">85 DM</option>
+              <option value="86dm">86 DM</option>
+              <option value="140dm">140 DM</option>
+              <option value="172dm">172 DM</option>
+              <option value="257dm">257 DM</option>
+              <option value="284dm">284 DM</option>
+              <option value="300dm">300 DM</option>
+              <option value="344dm">344 DM</option>
+              <option value="408dm">408 DM</option>
+              <option value="429dm">429 DM</option>
+              <option value="514dm">514 DM</option>
+              <option value="600dm">600 DM</option>
+              <option value="706dm">706 DM</option>
+              <option value="716dm">716 DM</option>
+              <option value="878dm">878 DM</option>
+              <option value="963dm">963 DM</option>
+              <option value="1050dm">1050 DM</option>
+              <option value="1220dm">1220 DM</option>
+              <option value="1412dm">1412 DM</option>
+              <option value="1446dm">1446 DM</option>
+              <option value="2195dm">2195 DM</option>
+              <option value="3073dm">3073 DM</option>
+              <option value="2688dm">2688 DM</option>
+              <option value="5532dm">5532 DM</option>
+              <option value="6234dm">6234 DM</option>
+              <option value="9288dm">9288 DM</option>
+            </select>
+          </div>
+          
+          <div class="order-summary">
+            <h3>Ringkasan Pesanan</h3>
+            <p>ID Game: <span class="highlight" id="summaryMlIdGame">-</span></p>
+            <p>ID Server: <span class="highlight" id="summaryMlServerId">-</span></p>
+            <p>Nama Akun: <span class="highlight" id="summaryMlNamaAkun">-</span></p>
+            <p>Jumlah Diamond: <span class="highlight" id="summaryMlDiamond">-</span></p>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <i class="fab fa-whatsapp"></i> Lanjut ke WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- PUBG Modal -->
+  <div class="pubg-modal" id="pubgModal">
+    <div class="pubg-modal-content">
+      <div class="pubg-modal-header">
+        <span>Top Up PUBG Mobile</span>
+        <span class="pubg-modal-close">&times;</span>
+      </div>
+      <div class="pubg-modal-body">
+        <form id="pubgForm">
+          <div class="form-group">
+            <label for="pubgIdGame">ID Game</label>
+            <input type="text" id="pubgIdGame" class="form-control" placeholder="Masukkan ID Game" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pubgNamaAkun">Nama Akun</label>
+            <input type="text" id="pubgNamaAkun" class="form-control" placeholder="Masukkan nama akun" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pubgUcPackage">Pilih Jumlah UC</label>
+            <select id="pubgUcPackage" class="form-control" required>
+              <option value="">Pilih jumlah UC...</option>
+              <option value="60uc">60 UC</option>
+              <option value="325uc">325 UC</option>
+              <option value="660uc">660 UC</option>
+              <option value="1800uc">1.800 UC</option>
+              <option value="3850uc">3.850 UC</option>
+              <option value="8100uc">8.100 UC</option>
+            </select>
+          </div>
+          
+          <div class="order-summary">
+            <h3>Ringkasan Pesanan</h3>
+            <p>ID Game: <span class="highlight" id="summaryPubgIdGame">-</span></p>
+            <p>Nama Akun: <span class="highlight" id="summaryPubgNamaAkun">-</span></p>
+            <p>Jumlah UC: <span class="highlight" id="summaryPubgUc">-</span></p>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <i class="fab fa-whatsapp"></i> Lanjut ke WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- E-Wallet Modal -->
+  <div class="ewallet-modal" id="ewalletModal">
+    <div class="ewallet-modal-content">
+      <div class="ewallet-modal-header">
+        <span>Top Up E-Wallet</span>
+        <span class="ewallet-modal-close">&times;</span>
+      </div>
+      <div class="ewallet-modal-body">
+        <form id="ewalletForm">
+          <div class="form-group">
+            <label for="ewalletType">Pilih E-Wallet</label>
+            <select id="ewalletType" class="form-control" required>
+              <option value="">Pilih E-Wallet...</option>
+              <option value="dana">DANA</option>
+              <option value="ovo">OVO</option>
+              <option value="gopay">GOPAY</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="nominal">Nominal Top Up</label>
+            <input type="number" id="nominal" class="form-control" placeholder="Masukkan nominal" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nomorTujuan">Nomor Tujuan</label>
+            <input type="text" id="nomorTujuan" class="form-control" placeholder="Masukkan nomor tujuan" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="atasNama">Atas Nama</label>
+            <input type="text" id="atasNama" class="form-control" placeholder="Atas nama siapa" required>
+          </div>
+          
+          <div class="order-summary">
+            <h3>Ringkasan Pesanan</h3>
+            <p>E-Wallet: <span class="highlight" id="summaryEwallet">-</span></p>
+            <p>Nominal: <span class="highlight" id="summaryNominal">-</span></p>
+            <p>Nomor Tujuan: <span class="highlight" id="summaryNomorTujuan">-</span></p>
+            <p>Atas Nama: <span class="highlight" id="summaryAtasNama">-</span></p>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <i class="fab fa-whatsapp"></i> Lanjut ke WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Free Fire Modal -->
+  <div class="freefire-modal" id="freefireModal">
+    <div class="freefire-modal-content">
+      <div class="freefire-modal-header">
+        <span>Top Up Free Fire</span>
+        <span class="freefire-modal-close">&times;</span>
+      </div>
+      <div class="freefire-modal-body">
+        <form id="freefireForm">
+          <div class="form-group">
+            <label for="idGame">ID Game</label>
+            <input type="text" id="idGame" class="form-control" placeholder="Masukkan ID Game" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="namaAkun">Nama Akun</label>
+            <input type="text" id="namaAkun" class="form-control" placeholder="Masukkan nama akun" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="diamondPackage">Pilih Jumlah Diamond</label>
+            <select id="diamondPackage" class="form-control" required>
+              <option value="">Pilih jumlah diamond...</option>
+              <option value="5dm">5 DM : </option>
+              <option value="10dm">10 DM</option>
+              <option value="15dm">15 DM</option>
+              <option value="20dm">20 DM</option>
+              <option value="50dm">50 DM</option>
+              <option value="70dm">70 DM</option>
+              <option value="100dm">100 DM</option>
+              <option value="140dm">140 DM</option>
+              <option value="210dm">210 DM</option>
+              <option value="300dm">300 DM</option>
+              <option value="355dm">355 DM</option>
+              <option value="425dm">425 DM</option>
+              <option value="500dm">500 DM</option>
+              <option value="720dm">720 DM</option>
+              <option value="860dm">860 DM</option>
+              <option value="1000dm">1000 DM</option>
+              <option value="1440dm">1440 DM</option>
+              <option value="2000dm">2000 DM</option>
+              <option value="2355dm">2355 DM</option>
+              <option value="2720dm">2720 DM</option>
+              <option value="3000dm">3000 DM</option>
+              <option value="3640dm">3640 DM</option>
+              <option value="4000dm">4000 DM</option>
+              <option value="7290dm">7290 DM</option>
+              <option value="mingguan">Membership Mingguan</option>
+              <option value="bulanan">Membership Bulanan</option>
+            </select>
+          </div>
+          
+          <div class="order-summary">
+            <h3>Ringkasan Pesanan</h3>
+            <p>ID Game: <span class="highlight" id="summaryIdGame">-</span></p>
+            <p>Nama Akun: <span class="highlight" id="summaryNamaAkun">-</span></p>
+            <p>Jumlah Diamond: <span class="highlight" id="summaryDiamond">-</span></p>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <i class="fab fa-whatsapp"></i> Lanjut ke WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Other Games Modal -->
+  <div class="othergames-modal" id="othergamesModal">
+    <div class="othergames-modal-content">
+      <div class="othergames-modal-header">
+        <span>Top Up Game Lainnya</span>
+        <span class="othergames-modal-close">&times;</span>
+      </div>
+      <div class="othergames-modal-body">
+        <form id="othergamesForm">
+          <div class="form-group">
+            <label for="gameType">Pilih Game</label>
+            <select id="gameType" class="form-control" required>
+              <option value="">Pilih Game...</option>
+              <option value="freefire">Free Fire</option>
+              <option value="mobilelegend">Mobile Legend</option>
+              <option value="pubg">PUBG Mobile</option>
+              <option value="bloodstrike">Blood Strike</option>
+              <option value="honorofkings">Honor of Kings</option>
+              <option value="arenaofvalor">Arena of Valor</option>
+              <option value="pointblank">Point Blank</option>
+              <option value="codm">Call of Duty Mobile</option>
+              <option value="lordsmobile">Lords Mobile</option>
+              <option value="valorant">Valorant</option>
+              <option value="genshinimpact">Genshin Impact</option>
+              <option value="magiccase">Magic Case</option>
+              <option value="eggparty">Egg Party</option>
+              <option value="sausageman">Sausage Man</option>
+              <option value="fcmobile">FC Mobile</option>
+              <option value="undawn">Undawn</option>
+              <option value="zeniszonezero">Zenis Zone Zero</option>
+              <option value="zepeto">Zepeto</option>
+              <option value="deltaforce">Delta Force</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="gameId">ID Game</label>
+            <input type="text" id="gameId" class="form-control" placeholder="Masukkan ID Game" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gameNickname">Nickname</label>
+            <input type="text" id="gameNickname" class="form-control" placeholder="Masukkan nickname" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gameNominal">Nominal Top Up</label>
+            <input type="text" id="gameNominal" class="form-control" placeholder="Masukkan nominal" required>
+          </div>
+          
+          <div class="order-summary">
+            <h3>Ringkasan Pesanan</h3>
+            <p>Game: <span class="highlight" id="summaryGame">-</span></p>
+            <p>ID Game: <span class="highlight" id="summaryGameId">-</span></p>
+            <p>Nickname: <span class="highlight" id="summaryGameNickname">-</span></p>
+            <p>Nominal: <span class="highlight" id="summaryGameNominal">-</span></p>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <i class="fab fa-whatsapp"></i> Lanjut ke WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Package Selection Modal for Sewa Bot -->
+  <div class="package-modal" id="packageModal">
+    <div class="package-modal-content">
+      <div class="package-modal-header">
+        <span id="packageModalTitle">Pilih Paket Sewa Bot</span>
+        <span class="package-modal-close">&times;</span>
+      </div>
+      <div class="package-modal-body">
+        <div class="package-options" id="packageOptions">
+          <div class="package-option" data-package="1minggu" data-price="5000">
+            <h4>Paket 1 Minggu</h4>
+            <p>Sewa bot untuk 7 hari</p>
+            <div class="price">Rp 5.000</div>
+          </div>
+          <div class="package-option" data-package="1bulan" data-price="10000">
+            <h4>Paket 1 Bulan</h4>
+            <p>Sewa bot untuk 30 hari</p>
+            <div class="price">Rp 10.000</div>
+          </div>
+          <div class="package-option" data-package="permanen" data-price="15000">
+            <h4>Paket Permanen</h4>
+            <p>Sewa bot selamanya</p>
+            <div class="price">Rp 15.000</div>
+          </div>
+          <div class="package-option" data-package="permanen-plus" data-price="20000">
+            <h4>Permanen + Free Sc</h4>
+            <p>Sewa bot selamanya + script gratis</p>
+            <div class="price">Rp 20.000</div>
+          </div>
+        </div>
+        
+        <button class="package-continue" id="continueButton" disabled>
+          <i class="fas fa-arrow-right"></i> Lanjutkan
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Order Modal for Panel -->
+  <div class="order-modal" id="orderModal">
+    <div class="order-modal-content">
+      <div class="order-modal-header">
+        <span>Pesan Panel Perodactyl</span>
+        <span class="order-modal-close">&times;</span>
+      </div>
+      <div class="order-modal-body">
+        <form id="panelOrderForm">
+          <div class="form-group">
+            <label for="productName">Produk</label>
+            <input type="text" id="productName" class="form-control" value="Bang Beli panel" readonly>
+          </div>
+          
+          <div class="form-group">
+            <label for="package">Paket Panel</label>
+            <select id="package" class="form-control" required>
+              <option value="">Pilih Paket...</option>
+              <option value="1gb">1GB</option>
+              <option value="2gb">2GB</option>
+              <option value="3gb">3GB</option>
+              <option value="4gb">4GB</option>
+              <option value="5gb">5GB</option>
+              <option value="6gb">6GB</option>
+              <option value="7gb">7GB</option>
+              <option value="8gb">8GB</option>
+              <option value="9gb">9GB</option>
+              <option value="unlimited">Unlimited</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="Masukkan username" required>
+          </div>
+          
+          <div class="order-summary">
+            <h3>Ringkasan Pesanan</h3>
+            <p>Produk: <span class="highlight" id="summaryProduct">Bang Beli panel</span></p>
+            <p>Paket: <span class="highlight" id="summaryPackage">-</span></p>
+            <p>Username: <span class="highlight" id="summaryUsername">-</span></p>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <i class="fab fa-whatsapp"></i> Lanjut ke WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Notification -->
+  <div class="notification" id="notification">
+    Pesanan berhasil dikirim ke WhatsApp!
+  </div>
+  
+  <!-- Tombol Customer Service -->
+  <div class="cs-button" id="csButton">
+    <i class="fas fa-headset"></i>
+    <div class="cs-tooltip">Butuh Bantuan?</div>
+  </div>
+  
+  <!-- Modal Customer Service -->
+  <div class="cs-modal" id="csModal">
+    <div class="cs-modal-header">
+      <span>Hubungi Kami</span>
+      <span class="cs-modal-close" id="closeModal">×</span>
+    </div>
+    <div class="cs-modal-body">
+      <div class="cs-option" onclick="window.open('https://wa.me/6283844381838?text=halo%20bang%20brexxy', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+        <div class="cs-text">
+          <h4>WhatsApp</h4>
+          <p>Respon cepat 24/7</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="cs-option" onclick="window.location.href='mailto:support@ferdi042007@gmail.com'">
+        <i class="fas fa-envelope"></i>
+        <div class="cs-text">
+          <h4>Email</h4>
+          <p>support@ferdi042007@gmail.com</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="cs-option" onclick="window.open('https://t.me/brexxyoffc', '_blank')">
+        <i class="fab fa-telegram"></i>
+        <div class="cs-text">
+          <h4>Telegram</h4>
+          <p>Channel dukungan</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="cs-option">
+        <i class="fas fa-comments"></i>
+        <div class="cs-text">
+          <h4>Live Chat</h4>
+          <p>Online sekarang</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    © 2025 Brexxy Official Store. All rights reserved.
+  </footer>
+  
+  <script>
+    // Banner Carousel Functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.banner-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const slideInterval = 5000; // 5 seconds
+    
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      indicators.forEach(indicator => indicator.classList.remove('active'));
+      
+      // Show the selected slide
+      slides[index].classList.add('active');
+      indicators[index].classList.add('active');
+      currentSlide = index;
+    }
+    
+    function nextSlide() {
+      let nextIndex = (currentSlide + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+    
+    // Set up automatic sliding
+    let slideTimer = setInterval(nextSlide, slideInterval);
+    
+    // Add click events to indicators
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        clearInterval(slideTimer);
+        showSlide(index);
+        slideTimer = setInterval(nextSlide, slideInterval);
+      });
+    });
+    
+    // Filter kategori produk
+    const kategoriButtons = document.querySelectorAll('.kategori-button');
+    
+    kategoriButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const kategori = this.getAttribute('data-kategori');
+        const cards = document.querySelectorAll('.product-card');
+        const buttons = document.querySelectorAll('.kategori-button');
+        
+        // Update active button
+        buttons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter cards
+        cards.forEach(card => {
+          if (kategori === 'semua') {
+            card.style.display = 'block';
+          } else {
+            card.style.display = card.dataset.kategori === kategori ? 'block' : 'none';
+          }
+        });
+      });
+    });
+    
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      
+      cards.forEach(card => {
+        const productName = card.dataset.nama.toLowerCase();
+        const productDesc = card.textContent.toLowerCase();
+        
+        if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+    
+    // Customer Service Button Functionality
+    const csButton = document.getElementById('csButton');
+    const csModal = document.getElementById('csModal');
+    const closeModal = document.getElementById('closeModal');
+    
+    csButton.addEventListener('click', function() {
+      csModal.style.display = 'block';
+    });
+    
+    closeModal.addEventListener('click', function() {
+      csModal.style.display = 'none';
+    });
+    
+    // Tutup modal jika mengklik di luar modal
+    window.addEventListener('click', function(event) {
+      if (event.target === csModal) {
+        csModal.style.display = 'none';
+      }
+    });
+    
+    // Nomor WA tujuan, gunakan format internasional tanpa +
+    const nomorWA = "6283844381838";
+    
+    // Package Selection Modal for Sewa Bot
+    const packageModal = document.getElementById('packageModal');
+    const packageModalTitle = document.getElementById('packageModalTitle');
+    const packageOptions = document.querySelectorAll('.package-option');
+    const continueButton = document.getElementById('continueButton');
+    const closePackageModal = document.querySelector('.package-modal-close');
+    const sewaBotButtons = document.querySelectorAll('.sewa-bot-button');
+    
+    let selectedProductName = '';
+    let selectedPackage = null;
+    
+    // Open package modal when clicking on sewa bot button
+    sewaBotButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const card = this.closest('.product-card');
+        selectedProductName = card.getAttribute('data-nama');
+        
+        // Update modal title with product name
+        packageModalTitle.textContent = `Pilih Paket ${selectedProductName}`;
+        
+        // Reset selection
+        packageOptions.forEach(option => option.classList.remove('selected'));
+        continueButton.disabled = true;
+        selectedPackage = null;
+        
+        // Show modal
+        packageModal.style.display = 'flex';
+      });
+    });
+    
+    // Close package modal
+    closePackageModal.addEventListener('click', function() {
+      packageModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === packageModal) {
+        packageModal.style.display = 'none';
+      }
+    });
+    
+    // Select package option
+    packageOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        // Remove selected class from all options
+        packageOptions.forEach(opt => opt.classList.remove('selected'));
+        
+        // Add selected class to clicked option
+        this.classList.add('selected');
+        
+        // Enable continue button
+        continueButton.disabled = false;
+        
+        // Store selected package
+        selectedPackage = {
+          name: this.querySelector('h4').textContent,
+          type: this.getAttribute('data-package'),
+          price: this.getAttribute('data-price')
+        };
+      });
+    });
+    
+    // Continue to WhatsApp
+    continueButton.addEventListener('click', function() {
+      if (!selectedPackage) return;
+      
+// Format WhatsApp message
+const pesan = `Bang Mau Sewa Bot%0ASewa Bot : ${selectedProductName}%0APaket Sewa: ${selectedPackage.name}%0AHarga : (Rp ${selectedPackage.price})`;
+const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+      
+      // Open WhatsApp
+      window.open(linkWA, '_blank');
+      
+      // Show notification
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+      
+      // Close modal
+      packageModal.style.display = 'none';
+    });
+    
+    // Add animation to products on page load
+    document.querySelectorAll('.product-card').forEach((card, index) => {
+      card.style.animation = `fadeIn 0.5s ease forwards ${index * 0.1}s`;
+    });
+    
+    // Panel Order Modal Functionality
+    const orderModal = document.getElementById('orderModal');
+    const closeOrderModal = document.querySelector('.order-modal-close');
+    const buyPanelButtons = document.querySelectorAll('.buy-panel-button');
+    const panelOrderForm = document.getElementById('panelOrderForm');
+    const packageSelect = document.getElementById('package');
+    const usernameInput = document.getElementById('username');
+    const notification = document.getElementById('notification');
+    
+    // Elements for order summary
+    const summaryProduct = document.getElementById('summaryProduct');
+    const summaryPackage = document.getElementById('summaryPackage');
+    const summaryUsername = document.getElementById('summaryUsername');
+    
+    // Open modal when clicking on panel buy button
+    buyPanelButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        orderModal.style.display = 'flex';
+        
+        // Reset form
+        panelOrderForm.reset();
+        summaryPackage.textContent = '-';
+        summaryUsername.textContent = '-';
+      });
+    });
+    
+    // Close modal
+    closeOrderModal.addEventListener('click', function() {
+      orderModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === orderModal) {
+        orderModal.style.display = 'none';
+      }
+    });
+    
+    // Update order summary when form changes
+    packageSelect.addEventListener('change', updateSummary);
+    usernameInput.addEventListener('input', updateSummary);
+    
+    function updateSummary() {
+      summaryPackage.textContent = packageSelect.options[packageSelect.selectedIndex]?.text || '-';
+      summaryUsername.textContent = usernameInput.value || '-';
+    }
+    
+    // Handle form submission
+    panelOrderForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (!packageSelect.value || !usernameInput.value) {
+        alert('Silakan lengkapi semua data pemesanan!');
+        return;
+      }
+      
+      const selectedPackage = packageSelect.options[packageSelect.selectedIndex].text;
+      const username = usernameInput.value;
+      
+      // Format WhatsApp message
+      const pesan = `Bang Beli panel%0APaket Panel : ${selectedPackage}%0Ausername : ${username}`;
+      const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+      
+      // Open WhatsApp
+      window.open(linkWA, '_blank');
+      
+      // Show notification
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+      
+      // Close modal
+      orderModal.style.display = 'none';
+    });
+    
+    // Tangani klik semua tombol beli sekarang (untuk produk non-sewa)
+    document.querySelectorAll('.buy-button:not(.sewa-bot-button):not(.buy-panel-button):not(.ewallet-button):not(.freefire-button):not(.othergames-button):not(.mobilelegend-button):not(.pubg-button)').forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+    
+        const card = this.closest('.product-card');
+        const nama = card.getAttribute('data-nama')?.trim() || "Produk";
+        const harga = parseInt(card.getAttribute('data-harga')) || 0;
+        const hargaFormat = harga.toLocaleString('id-ID');
+    
+        const pesan = `Saya Ingin Membeli : ${nama}%0AHarga : Rp ${hargaFormat}`;
+        const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+        window.open(linkWA, '_blank');
+      });
+    });
+    
+    // Mobile Legends Modal Functionality
+    const mobilelegendModal = document.getElementById('mobilelegendModal');
+    const mobilelegendButtons = document.querySelectorAll('.mobilelegend-button');
+    const mobilelegendForm = document.getElementById('mobilelegendForm');
+    const mobilelegendClose = document.querySelector('.mobilelegend-modal-close');
+    
+    // Summary elements for mobilelegend
+    const summaryMlIdGame = document.getElementById('summaryMlIdGame');
+    const summaryMlServerId = document.getElementById('summaryMlServerId');
+    const summaryMlNamaAkun = document.getElementById('summaryMlNamaAkun');
+    const summaryMlDiamond = document.getElementById('summaryMlDiamond');
+    
+    // Open mobilelegend modal
+    mobilelegendButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        mobilelegendModal.style.display = 'flex';
+        mobilelegendForm.reset();
+        summaryMlIdGame.textContent = '-';
+        summaryMlServerId.textContent = '-';
+        summaryMlNamaAkun.textContent = '-';
+        summaryMlDiamond.textContent = '-';
+      });
+    });
+    
+    // Close mobilelegend modal
+    mobilelegendClose.addEventListener('click', function() {
+      mobilelegendModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === mobilelegendModal) {
+        mobilelegendModal.style.display = 'none';
+      }
+    });
+    
+    // Update mobilelegend summary
+    document.getElementById('mlIdGame').addEventListener('input', function() {
+      summaryMlIdGame.textContent = this.value || '-';
+    });
+    
+    document.getElementById('mlServerId').addEventListener('input', function() {
+      summaryMlServerId.textContent = this.value || '-';
+    });
+    
+    document.getElementById('mlNamaAkun').addEventListener('input', function() {
+      summaryMlNamaAkun.textContent = this.value || '-';
+    });
+    
+    document.getElementById('mlDiamondPackage').addEventListener('change', function() {
+      summaryMlDiamond.textContent = this.options[this.selectedIndex]?.text || '-';
+    });
+    
+    // Handle mobilelegend form submission
+    mobilelegendForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const idGame = document.getElementById('mlIdGame').value;
+      const serverId = document.getElementById('mlServerId').value;
+      const namaAkun = document.getElementById('mlNamaAkun').value;
+      const diamondPackage = document.getElementById('mlDiamondPackage').value;
+      
+      if (!idGame || !serverId || !namaAkun || !diamondPackage) {
+        alert('Silakan lengkapi semua data pemesanan!');
+        return;
+      }
+      
+      const diamondPackageText = document.getElementById('mlDiamondPackage').options[document.getElementById('mlDiamondPackage').selectedIndex].text;
+      
+      // Format WhatsApp message
+      const pesan = `Bang Top Up Mobile Legends%0AID Game: ${idGame}%0AID Server: ${serverId}%0ANama Akun: ${namaAkun}%0APaket Diamond: ${diamondPackageText}`;
+      const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+      
+      // Open WhatsApp
+      window.open(linkWA, '_blank');
+      
+      // Show notification
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+      
+      // Close modal
+      mobilelegendModal.style.display = 'none';
+    });
+    
+    // PUBG Modal Functionality
+    const pubgModal = document.getElementById('pubgModal');
+    const pubgButtons = document.querySelectorAll('.pubg-button');
+    const pubgForm = document.getElementById('pubgForm');
+    const pubgClose = document.querySelector('.pubg-modal-close');
+    
+    // Summary elements for pubg
+    const summaryPubgIdGame = document.getElementById('summaryPubgIdGame');
+    const summaryPubgNamaAkun = document.getElementById('summaryPubgNamaAkun');
+    const summaryPubgUc = document.getElementById('summaryPubgUc');
+    
+    // Open pubg modal
+    pubgButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        pubgModal.style.display = 'flex';
+        pubgForm.reset();
+        summaryPubgIdGame.textContent = '-';
+        summaryPubgNamaAkun.textContent = '-';
+        summaryPubgUc.textContent = '-';
+      });
+    });
+    
+    // Close pubg modal
+    pubgClose.addEventListener('click', function() {
+      pubgModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === pubgModal) {
+        pubgModal.style.display = 'none';
+      }
+    });
+    
+    // Update pubg summary
+    document.getElementById('pubgIdGame').addEventListener('input', function() {
+      summaryPubgIdGame.textContent = this.value || '-';
+    });
+    
+    document.getElementById('pubgNamaAkun').addEventListener('input', function() {
+      summaryPubgNamaAkun.textContent = this.value || '-';
+    });
+    
+    document.getElementById('pubgUcPackage').addEventListener('change', function() {
+      summaryPubgUc.textContent = this.options[this.selectedIndex]?.text || '-';
+    });
+    
+    // Handle pubg form submission
+    pubgForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const idGame = document.getElementById('pubgIdGame').value;
+      const namaAkun = document.getElementById('pubgNamaAkun').value;
+      const ucPackage = document.getElementById('pubgUcPackage').value;
+      
+      if (!idGame || !namaAkun || !ucPackage) {
+        alert('Silakan lengkapi semua data pemesanan!');
+        return;
+      }
+      
+      const ucPackageText = document.getElementById('pubgUcPackage').options[document.getElementById('pubgUcPackage').selectedIndex].text;
+      
+      // Format WhatsApp message
+      const pesan = `Bang Top Up PUBG Mobile%0AID Game: ${idGame}%0ANama Akun: ${namaAkun}%0APaket UC: ${ucPackageText}`;
+      const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+      
+      // Open WhatsApp
+      window.open(linkWA, '_blank');
+      
+      // Show notification
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+      
+      // Close modal
+      pubgModal.style.display = 'none';
+    });
+    
+    // E-Wallet Modal Functionality
+    const ewalletModal = document.getElementById('ewalletModal');
+    const ewalletButtons = document.querySelectorAll('.ewallet-button');
+    const ewalletForm = document.getElementById('ewalletForm');
+    const ewalletClose = document.querySelector('.ewallet-modal-close');
+    
+    // Summary elements for ewallet
+    const summaryEwallet = document.getElementById('summaryEwallet');
+    const summaryNominal = document.getElementById('summaryNominal');
+    const summaryNomorTujuan = document.getElementById('summaryNomorTujuan');
+    const summaryAtasNama = document.getElementById('summaryAtasNama');
+    
+    // Open ewallet modal
+    ewalletButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        ewalletModal.style.display = 'flex';
+        ewalletForm.reset();
+        summaryEwallet.textContent = '-';
+        summaryNominal.textContent = '-';
+        summaryNomorTujuan.textContent = '-';
+        summaryAtasNama.textContent = '-';
+      });
+    });
+    
+    // Close ewallet modal
+    ewalletClose.addEventListener('click', function() {
+      ewalletModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === ewalletModal) {
+        ewalletModal.style.display = 'none';
+      }
+    });
+    
+    // Update ewallet summary
+    document.getElementById('ewalletType').addEventListener('change', function() {
+      summaryEwallet.textContent = this.options[this.selectedIndex]?.text || '-';
+    });
+    
+    document.getElementById('nominal').addEventListener('input', function() {
+      summaryNominal.textContent = this.value ? `Rp ${parseInt(this.value).toLocaleString('id-ID')}` : '-';
+    });
+    
+    document.getElementById('nomorTujuan').addEventListener('input', function() {
+      summaryNomorTujuan.textContent = this.value || '-';
+    });
+    
+    document.getElementById('atasNama').addEventListener('input', function() {
+      summaryAtasNama.textContent = this.value || '-';
+    });
+    
+    // Handle ewallet form submission
+    ewalletForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const ewalletType = document.getElementById('ewalletType').value;
+      const nominal = document.getElementById('nominal').value;
+      const nomorTujuan = document.getElementById('nomorTujuan').value;
+      const atasNama = document.getElementById('atasNama').value;
+      
+      if (!ewalletType || !nominal || !nomorTujuan || !atasNama) {
+        alert('Silakan lengkapi semua data pemesanan!');
+        return;
+      }
+      
+      const ewalletTypeText = document.getElementById('ewalletType').options[document.getElementById('ewalletType').selectedIndex].text;
+      
+      // Format WhatsApp message
+      const pesan = `Bang Mau TopUp%0AJenis E-Wallet: ${ewalletTypeText}%0ANominal: Rp ${parseInt(nominal).toLocaleString('id-ID')}%0ANomor Tujuan: ${nomorTujuan}%0AAtas Nama: ${atasNama}`;
+      const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+      
+      // Open WhatsApp
+      window.open(linkWA, '_blank');
+      
+      // Show notification
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+      
+      // Close modal
+      ewalletModal.style.display = 'none';
+    });
+    
+    // Free Fire Modal Functionality
+    const freefireModal = document.getElementById('freefireModal');
+    const freefireButtons = document.querySelectorAll('.freefire-button');
+    const freefireForm = document.getElementById('freefireForm');
+    const freefireClose = document.querySelector('.freefire-modal-close');
+    
+    // Summary elements for freefire
+    const summaryIdGame = document.getElementById('summaryIdGame');
+    const summaryNamaAkun = document.getElementById('summaryNamaAkun');
+    const summaryDiamond = document.getElementById('summaryDiamond');
+    
+    // Open freefire modal
+    freefireButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        freefireModal.style.display = 'flex';
+        freefireForm.reset();
+        summaryIdGame.textContent = '-';
+        summaryNamaAkun.textContent = '-';
+        summaryDiamond.textContent = '-';
+      });
+    });
+    
+    // Close freefire modal
+    freefireClose.addEventListener('click', function() {
+      freefireModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === freefireModal) {
+        freefireModal.style.display = 'none';
+      }
+    });
+    
+    // Update freefire summary
+    document.getElementById('idGame').addEventListener('input', function() {
+      summaryIdGame.textContent = this.value || '-';
+    });
+    
+    document.getElementById('namaAkun').addEventListener('input', function() {
+      summaryNamaAkun.textContent = this.value || '-';
+    });
+    
+    document.getElementById('diamondPackage').addEventListener('change', function() {
+      summaryDiamond.textContent = this.options[this.selectedIndex]?.text || '-';
+    });
+    
+    // Handle freefire form submission
+    freefireForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const idGame = document.getElementById('idGame').value;
+      const namaAkun = document.getElementById('namaAkun').value;
+      const diamondPackage = document.getElementById('diamondPackage').value;
+      
+      if (!idGame || !namaAkun || !diamondPackage) {
+        alert('Silakan lengkapi semua data pemesanan!');
+        return;
+      }
+      
+      const diamondPackageText = document.getElementById('diamondPackage').options[document.getElementById('diamondPackage').selectedIndex].text;
+      
+      // Format WhatsApp message
+      const pesan = `Bang Top Up Free Fire%0AID Game: ${idGame}%0ANama Akun: ${namaAkun}%0APaket Diamond: ${diamondPackageText}`;
+      const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+      
+      // Open WhatsApp
+      window.open(linkWA, '_blank');
+      
+      // Show notification
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+      
+      // Close modal
+      freefireModal.style.display = 'none';
+    });
+    
+    // Other Games Modal Functionality
+    const othergamesModal = document.getElementById('othergamesModal');
+    const othergamesButtons = document.querySelectorAll('.othergames-button');
+    const othergamesForm = document.getElementById('othergamesForm');
+    const othergamesClose = document.querySelector('.othergames-modal-close');
+    
+    // Summary elements for othergames
+    const summaryGame = document.getElementById('summaryGame');
+    const summaryGameId = document.getElementById('summaryGameId');
+    const summaryGameNickname = document.getElementById('summaryGameNickname');
+    const summaryGameNominal = document.getElementById('summaryGameNominal');
+    
+    // Open othergames modal
+    othergamesButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        othergamesModal.style.display = 'flex';
+        othergamesForm.reset();
+        summaryGame.textContent = '-';
+        summaryGameId.textContent = '-';
+        summaryGameNickname.textContent = '-';
+        summaryGameNominal.textContent = '-';
+      });
+    });
+    
+    // Close othergames modal
+    othergamesClose.addEventListener('click', function() {
+      othergamesModal.style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === othergamesModal) {
+        othergamesModal.style.display = 'none';
+      }
+    });
+    
+    // Update othergames summary
+    document.getElementById('gameType').addEventListener('change', function() {
+      summaryGame.textContent = this.options[this.selectedIndex]?.text || '-';
+    });
+    
+    document.getElementById('gameId').addEventListener('input', function() {
+      summaryGameId.textContent = this.value || '-';
+    });
+    
+    document.getElementById('gameNickname').addEventListener('input', function() {
+      summaryGameNickname.textContent = this.value || '-';
+    });
+    
+    document.getElementById('gameNominal').addEventListener('input', function() {
+      summaryGameNominal.textContent = this.value ? `Rp ${parseInt(this.value).toLocaleString('id-ID')}` : '-';
+    });
+    
+    // Handle othergames form submission
+    othergamesForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const gameType = document.getElementById('gameType').value;
+      const gameId = document.getElementById('gameId').value;
+      const gameNickname = document.getElementById('gameNickname').value;
+      const gameNominal = document.getElementById('gameNominal').value;
+      
+      if (!gameType || !gameId || !gameNickname || !gameNominal) {
+        alert('Silakan lengkapi semua data pemesanan!');
+        return;
+      }
+      
+      const gameTypeText = document.getElementById('gameType').options[document.getElementById('gameType').selectedIndex].text;
+      
+      // Format WhatsApp message
+      const pesan = `Bang Top Up ${gameTypeText}%0AID Game: ${gameId}%0ANickname: ${gameNickname}%0ANominal: Rp ${parseInt(gameNominal).toLocaleString('id-ID')}`;
+      const linkWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+      
+      // Open WhatsApp
+      window.open(linkWA, '_blank');
+      
+      // Show notification
+      notification.classList.add('show');
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+      
+      // Close modal
+      othergamesModal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

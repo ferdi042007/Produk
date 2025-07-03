@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LOGO 3D - Desain Profesional Mewah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #25D366;
+      --primary-dark: #128C7E;
+      --gold: #D4AF37;
+      --platinum: #E5E4E2;
+      --dark-bg: #0a0a0a;
+      --card-bg: #1a1a1a;
+      --text-light: rgba(255,255,255,0.9);
+      --text-muted: rgba(255,255,255,0.6);
+      --border-color: rgba(255,255,255,0.1);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    body { 
+      background-color: var(--dark-bg); 
+      color: var(--text-light);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .container { 
+      max-width: 1400px; 
+      margin: 0 auto; 
+      padding: 20px; 
+      position: relative; 
+    }
+    
+    .back-btn { 
+      position: absolute; 
+      top: 40px; 
+      left: 40px; 
+      color: var(--platinum); 
+      text-decoration: none; 
+      font-size: 1rem; 
+      padding: 10px 20px; 
+      border: 1px solid var(--border-color); 
+      border-radius: 30px; 
+      transition: var(--transition); 
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(5px);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .back-btn:hover { 
+      background: rgba(255,255,255,0.15); 
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    
+    header { 
+      text-align: center; 
+      padding: 80px 0 40px; 
+      position: relative;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0) 70%);
+      z-index: -1;
+    }
+    
+    h1 { 
+      font-size: 3.5rem; 
+      color: var(--platinum); 
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: 2px; 
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    
+    .subtitle { 
+      font-size: 1.3rem; 
+      color: var(--text-muted); 
+      margin-bottom: 30px; 
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    
+    .catalog { 
+      display: flex; 
+      justify-content: center; 
+      gap: 25px; 
+      margin: 50px 0 40px; 
+      flex-wrap: wrap; 
+    }
+    
+    .catalog-item { 
+      background: rgba(30, 30, 30, 0.7); 
+      border: 1px solid var(--border-color); 
+      border-radius: 15px; 
+      padding: 20px 15px; 
+      cursor: pointer; 
+      transition: var(--transition); 
+      color: var(--text-light); 
+      width: 110px; 
+      height: 110px; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .catalog-item::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1), transparent);
+      transform: rotate(45deg);
+      transition: var(--transition);
+      opacity: 0;
+    }
+    
+    .catalog-item:hover::before,
+    .catalog-item.active::before {
+      opacity: 1;
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: rotate(45deg) translate(-30%, -30%); }
+      100% { transform: rotate(45deg) translate(30%, 30%); }
+    }
+    
+    .catalog-item:hover, 
+    .catalog-item.active { 
+      background: rgba(255, 255, 255, 0.05); 
+      border-color: var(--gold);
+      transform: translateY(-5px) scale(1.05);
+    }
+    
+    .catalog-icon { 
+      font-size: 32px; 
+      margin-bottom: 10px; 
+      color: var(--gold);
+      transition: var(--transition);
+    }
+    
+    .catalog-item:hover .catalog-icon,
+    .catalog-item.active .catalog-icon {
+      transform: scale(1.2);
+    }
+    
+    .product-slider-wrapper { 
+      position: relative; 
+      overflow: hidden; 
+      margin: 60px 0; 
+      padding: 0 50px;
+    }
+    
+    .product-slider { 
+      display: flex; 
+      gap: 30px; 
+      overflow-x: auto; 
+      scroll-behavior: smooth; 
+      padding: 20px 0;
+    }
+    
+    .product-slider::-webkit-scrollbar { 
+      display: none; 
+    }
+    
+    .slider-btn { 
+      position: absolute; 
+      top: 50%; 
+      transform: translateY(-50%); 
+      background: rgba(255,255,255,0.1); 
+      border: none; 
+      color: white; 
+      font-size: 1.8rem; 
+      cursor: pointer; 
+      z-index: 1; 
+      padding: 15px; 
+      border-radius: 50%; 
+      transition: var(--transition); 
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--border-color);
+    }
+    
+    .slider-btn:hover { 
+      background: rgba(212,175,55,0.3); 
+      color: var(--gold);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .slider-left { 
+      left: 0; 
+    }
+    
+    .slider-right { 
+      right: 0; 
+    }
+    
+    .product-card { 
+      background: var(--card-bg); 
+      border-radius: 20px; 
+      overflow: hidden; 
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); 
+      width: 350px; 
+      border: 1px solid var(--border-color); 
+      flex: 0 0 auto; 
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--primary), var(--gold));
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(212,175,55,0.2);
+    }
+    
+    .product-card:hover::before {
+      opacity: 1;
+    }
+    
+    .product-image { 
+      height: 250px; 
+      background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      overflow: hidden; 
+      border-bottom: 1px solid var(--border-color); 
+      position: relative;
+    }
+    
+    .product-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.5) 100%);
+      pointer-events: none;
+    }
+    
+    .product-image img { 
+      max-width: 80%; 
+      max-height: 80%; 
+      object-fit: contain; 
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); 
+      transition: var(--transition);
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 15px rgba(255,255,255,0.5));
+    }
+    
+    .product-info { 
+      padding: 25px; 
+      text-align: center; 
+    }
+    
+    .product-title { 
+      font-size: 1.3rem; 
+      margin-bottom: 12px; 
+      color: var(--platinum); 
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    .product-price { 
+      font-size: 1.2rem; 
+      color: var(--gold); 
+      font-weight: 600; 
+      margin-bottom: 20px; 
+      letter-spacing: 1px;
+    }
+    
+    .order-btn { 
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); 
+      color: white; 
+      padding: 12px 30px; 
+      border-radius: 50px; 
+      text-decoration: none; 
+      font-weight: 600; 
+      transition: var(--transition); 
+      box-shadow: 0 5px 15px rgba(37,211,102,0.3); 
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .order-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition);
+    }
+    
+    .order-btn:hover { 
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); 
+      box-shadow: 0 8px 25px rgba(37,211,102,0.5); 
+      transform: translateY(-3px);
+    }
+    
+    .order-btn:hover::before {
+      left: 100%;
+    }
+    
+    footer { 
+      text-align: center; 
+      padding: 50px 0; 
+      margin-top: 80px; 
+      color: var(--text-muted); 
+      border-top: 1px solid var(--border-color); 
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    
+    /* Section Title untuk Produk Tambahan */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 80px 0 40px;
+      color: var(--platinum);
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      position: relative;
+    }
+    .product-recommendation {
+  color: #FFA500; /* Warna oranye */
+  font-size: 0.8em;
+  margin: 5px 0;
+  font-weight: bold;
+  padding: 3px;
+  text-align: center;
+  background-color: #FFF8E1; /* Background kuning muda */
+  border-radius: 4px;
+}
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* Floating particles background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(212,175,55,0.5);
+      border-radius: 50%;
+      filter: blur(1px);
+      animation: float linear infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-100vh) rotate(360deg); }
+    }
+
+    /* Loading animation */
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--dark-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
+    .loader {
+      width: 80px;
+      height: 80px;
+      border: 5px solid rgba(212,175,55,0.2);
+      border-radius: 50%;
+      border-top-color: var(--gold);
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1200px) {
+      .container {
+        padding: 20px 30px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .product-slider-wrapper {
+        padding: 0 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 { 
+        font-size: 2.2rem; 
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .back-btn { 
+        top: 20px; 
+        left: 20px; 
+        font-size: 0.9rem; 
+        padding: 8px 15px; 
+      }
+      
+      .catalog { 
+        gap: 15px; 
+        margin: 30px 0;
+      }
+      
+      .catalog-item { 
+        padding: 15px 10px; 
+        width: 90px; 
+        height: 90px; 
+      }
+      
+      .catalog-icon { 
+        font-size: 28px; 
+      }
+      
+      .section-title { 
+        font-size: 1.8rem; 
+        margin: 60px 0 30px;
+      }
+      
+      .product-card {
+        width: 300px;
+      }
+      
+      .product-image {
+        height: 200px;
+      }
+      
+      .slider-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      h1 { 
+        font-size: 1.8rem; 
+      }
+      
+      header {
+        padding: 60px 0 30px;
+      }
+      
+      .catalog { 
+        gap: 10px; 
+      }
+      
+      .catalog-item { 
+        padding: 12px 8px; 
+        width: 80px; 
+        height: 80px; 
+        font-size: 0.8rem;
+      }
+      
+      .catalog-icon { 
+        font-size: 24px; 
+        margin-bottom: 5px;
+      }
+      
+      .product-slider-wrapper {
+        padding: 0 15px;
+      }
+      
+      .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <a href="products.html" class="back-btn"><i class="fas fa-chevron-left"></i> Kembali</a>
+    <header>
+      <h1>LOGO JB</h1>
+      <p class="subtitle">logo Yang Berkualitas Dan Keren</p>
+    </header>
+
+    <div class="catalog">
+      <div class="catalog-item active" data-category="all"><div class="catalog-icon"><i class="fas fa-th"></i></div><div>Semua</div></div>
+      <div class="catalog-item" data-category="maskot"><div class="catalog-icon"><i class="fas fa-robot"></i></div><div>Maskot</div></div>
+      <div class="catalog-item" data-category="ai"><div class="catalog-icon"><i class="fas fa-brain"></i></div><div>AI</div></div>
+      <div class="catalog-item" data-category="3d"><div class="catalog-icon"><i class="fas fa-cube"></i></div><div>3D</div></div>
+    </div>
+
+    <div class="product-slider-wrapper">
+      <button class="slider-btn slider-left">&#10094;</button>
+      <div class="product-slider" id="productSlider">
+    <div class="product-card" data-category="maskot">
+      <div class="product-image"><img src="https://files.catbox.moe/5stre0.jpg" alt="Logo Maskot"></div>
+      <div class="product-info">
+        <h2 class="product-title">LOGO MASKOT</h2>
+        <p class="product-price">Rp 20.000</p>
+        <p class="product-recommendation">⭐ Produk Terlaris! Didesain oleh profesional</p>
+        <a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/5stre0.jpg')">Pesan Sekarang</a>
+      </div>
+    </div>
+          <div class="product-card" data-category="maskot">
+      <div class="product-image"><img src="https://files.catbox.moe/8egiex.jpg" alt="Logo Maskot"></div>
+      <div class="product-info">
+        <h2 class="product-title">LOGO MASKOT</h2>
+        <p class="product-price">Rp 20.000</p>
+        <p class="product-recommendation">⭐ Produk Terlaris! Didesain oleh profesional</p>
+        <a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/8egiex.jpg')">Pesan Sekarang</a>
+      </div>
+    </div>
+            <div class="product-card" data-category="maskot">
+      <div class="product-image"><img src="https://files.catbox.moe/pjwcx6.jpg" alt="Logo Maskot"></div>
+      <div class="product-info">
+        <h2 class="product-title">LOGO MASKOT</h2>
+        <p class="product-price">Rp 15.000</p>
+        <p class="product-recommendation">⭐ Produk Terlaris! Didesain oleh profesional</p>
+        <a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/pjwcx6.jpg')">Pesan Sekarang</a>
+      </div>
+    </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/il52dk.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/il52dk.jpg')">Pesan Sekarang</a></div>
+        </div>
+            <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/iw2il9.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/iw2il9.jpg')">Pesan Sekarang</a></div>
+          </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/l570qa.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/l570qa.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/10plol.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/10plol.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/fmzjfc.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/fmzjfc.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/oyy9yz.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/oyy9yz.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/ea9alu.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/ea9alu.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/495ofs.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/495ofs.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/5iyyjd.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/5iyyjd.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/oslkzu.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/oslkzu.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/j0xx9i.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/j0xx9i.jpg')">Pesan Sekarang</a></div>
+        </div>
+         <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/3fq5lm.jpg" alt="Logo Maskot"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT </h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT', 'Rp 5.000', 'https://files.catbox.moe/3fq5lm.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <!-- Produk AI -->
+           <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/axidfj.jpg" alt="Logo Ai Anime"></div>
+          <div class="product-info"><h2 class="product-title">LOGO Ai Anime</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO Ai Anime', 'Rp 5.000', 'https://files.catbox.moe/axidfj.jpg')">Pesan Sekarang</a></div>
+        </div>
+           <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/po45aw.jpg" alt="Logo Ai Anime"></div>
+          <div class="product-info"><h2 class="product-title">LOGO Ai Anime</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO Ai Anime', 'Rp 5.000', 'https://files.catbox.moe/po45aw.jpg')">Pesan Sekarang</a></div>
+        </div>
+           <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/avf5fy.jpg" alt="Logo Ai Anime"></div>
+          <div class="product-info"><h2 class="product-title">LOGO Ai Anime</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO Ai Anime', 'Rp 5.000', 'https://files.catbox.moe/avf5fy.jpg')">Pesan Sekarang</a></div>
+        </div>
+           <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/mdhi3p.jpg" alt="Logo Ai Anime"></div>
+          <div class="product-info"><h2 class="product-title">LOGO Ai Anime</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO Ai Anime', 'Rp 5.000', 'https://files.catbox.moe/mdhi3p.jpg')">Pesan Sekarang</a></div>
+        </div>
+           <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/6hdcr1.jpg" alt="Logo Ai Anime"></div>
+          <div class="product-info"><h2 class="product-title">LOGO Ai Anime</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO Ai Anime', 'Rp 5.000', 'https://files.catbox.moe/6hdcr1.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <!-- Produk 3D -->
+          <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/j2vbhc.jpg" alt="Logo 3D Free Fire"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D Karakter</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D Karakter', 'Rp 5.000', 'https://files.catbox.moe/j2vbhc.jpg')">Pesan Sekarang</a></div>
+        </div>
+          <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/18svxk.jpg" alt="Logo 3D Free Fire"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D Karakter</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D Karakter', 'Rp 5.000', 'https://files.catbox.moe/18svxk.jpg')">Pesan Sekarang</a></div>
+        </div>
+          <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/6q4k03.jpg" alt="Logo 3D Free Fire"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D Karakter</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D Karakter', 'Rp 5.000', 'https://files.catbox.moe/6q4k03.jpg')">Pesan Sekarang</a></div>
+        </div>
+          <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/h4tm9u.jpg" alt="Logo 3D Free Fire"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D Karakter</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D Karakter', 'Rp 5.000', 'https://files.catbox.moe/h4tm9u.jpg')">Pesan Sekarang</a></div>
+        </div>
+          <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/v3127r.jpg" alt="Logo 3D Free Fire"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D Karakter</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D Karakter', 'Rp 5.000', 'https://files.catbox.moe/v3127r.jpg')">Pesan Sekarang</a></div>
+        </div>
+      </div>
+      <button class="slider-btn slider-right">&#10095;</button>
+    </div>
+
+    <!-- Produk Tambahan dengan Slider -->
+    <h2 class="section-title">LOGO JB 2</h2>
+    <div class="product-slider-wrapper">
+      <button class="slider-btn slider-left" onclick="scrollAdditionalSlider(-350)">&#10094;</button>
+      <div class="product-slider" id="additionalProductSlider">
+        <!-- 10 Produk Maskot -->
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/b4eama.jpg" alt="Maskot 3"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 3</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 3', 'Rp 5.000', 'https://files.catbox.moe/b4eama.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/byia5z.jpg" alt="Maskot 4"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 4</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 4', 'Rp 5.000', 'https://files.catbox.moe/byia5z.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/9vniee.jpg" alt="Maskot 5"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 5</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 5', 'Rp 5.000', 'https://files.catbox.moe/9vniee.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/c4cq39.jpg" alt="Maskot 6"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 6</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 6', 'Rp 5.000', 'https://files.catbox.moe/c4cq39.jpg')">Pesan Sekarang</a></div>
+        </div>
+                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/chg8nr.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/chg8nr.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/qxdgg0.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/qxdgg0.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/fpdt88.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/fpdt88.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/mkqlzk.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/mkqlzk.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/fpdt88.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/fpdt88.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/hrqssf.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/hrqssf.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/283y4m.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/283y4m.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/rbyhec.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/rbyhec.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/wt0efw.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/wt0efw.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/nzblqw.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/nzblqw.jpg')">Pesan Sekarang</a></div>
+        </div>
+      
+                              <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/dw8sut.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/dw8sut.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/9pzsuy.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/9pzsuy.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/d7x8n3.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/d7x8n3.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/r96z3e.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/r96z3e.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/p36vr3.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/p36vr3.jpg')">Pesan Sekarang</a></div>
+        </div>
+        
+                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/ryozwl.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp. 5.000', 'https://files.catbox.moe/ryozwl.jpg')">Pesan Sekarang</a></div>
+        </div>
+                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/6xbqn2.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/6xbqn2.jpg')">Pesan Sekarang</a></div>
+        </div>
+                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/h4ngyb.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/h4ngyb.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/nf9j4l.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/nf9j4l.jpg')">Pesan Sekarang</a></div>
+        </div>
+                <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/u56el6.jpg" alt="Maskot 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 7', 'Rp 5.000', 'https://files.catbox.moe/u56el6.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/qxdgg0.jpg" alt="Maskot 8"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 8</h2><p class="product-price">Rp 5..000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 8', 'Rp 5.000', 'https://files.catbox.moe/qxdgg0.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/hhrjsz.jpg" alt="Maskot 9"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 9</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 9', 'Rp 5.000', 'https://files.catbox.moe/hhrjsz.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="maskot">
+          <div class="product-image"><img src="https://files.catbox.moe/jo6f86.jpg" alt="Maskot 10"></div>
+          <div class="product-info"><h2 class="product-title">LOGO MASKOT 10</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO MASKOT 10', 'Rp 5.000', 'https://files.catbox.moe/jo6f86.jpg')">Pesan Sekarang</a></div>
+        </div>
+
+        <!-- 10 Produk AI -->
+        <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/79lbjp.jpg" alt="AI 6"></div>
+          <div class="product-info"><h2 class="product-title">LOGO AI 6</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO AI 6', 'Rp 5.000', 'https://files.catbox.moe/79lbjp.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/ky8ty8.jpg" alt="AI 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO AI 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO AI 7', 'Rp 5.000', 'https://files.catbox.moe/ky8ty8.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/veoqec.jpg" alt="AI 8"></div>
+          <div class="product-info"><h2 class="product-title">LOGO AI 8</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO AI 8', 'Rp 5.000', 'https://files.catbox.moe/veoqec.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/6d6fvu.jpg" alt="AI 9"></div>
+          <div class="product-info"><h2 class="product-title">LOGO AI 9</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO AI 9', 'Rp 5.000', 'https://files.catbox.moe/6d6fvu.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="ai">
+          <div class="product-image"><img src="https://files.catbox.moe/g8r5yq.jpg" alt="AI 10"></div>
+          <div class="product-info"><h2 class="product-title">LOGO AI 10</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO AI 10', 'Rp 5.000', 'https://files.catbox.moe/g8r5yq.jpg')">Pesan Sekarang</a></div>
+        </div>
+
+        <!-- 10 Produk 3D -->
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/u3h6yx.jpg" alt="3D 1"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 1</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 1', 'Rp 5.000', 'https://files.catbox.moe/u3h6yx.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/2wafn4.jpg" alt="3D 2"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 2</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 2', 'Rp 5.000', 'https://files.catbox.moe/2wafn4.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/4rod0f.jpg" alt="3D 3"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 3</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 3', 'Rp 5.000', 'https://files.catbox.moe/4rod0f.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/kuhhk7.jpg" alt="3D 4"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 4</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 4', 'Rp 5.000', 'https://files.catbox.moe/kuhhk7.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/xxw4w1.jpg" alt="3D 5"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 5</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 5', 'Rp 5.000', 'https://files.catbox.moe/xxw4w1.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/xb7779.jpg" alt="3D 6"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 6</h2><p class="product-price">Rp 5..000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 6', 'Rp 5.000', 'https://files.catbox.moe/xb7779.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/wdhbc4.jpg" alt="3D 7"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 7</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 7', 'Rp 5.000', 'https://files.catbox.moe/wdhbc4.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/ekppyh.jpg" alt="3D 8"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 8</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 8', 'Rp 5.000', 'https://files.catbox.moe/ekppyh.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/knvs6t.jpg" alt="3D 9"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 9</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 9', 'Rp 5.000', 'https://files.catbox.moe/knvs6t.jpg')">Pesan Sekarang</a></div>
+        </div>
+        <div class="product-card" data-category="3d">
+          <div class="product-image"><img src="https://files.catbox.moe/2xo29y.jpg" alt="3D 10"></div>
+          <div class="product-info"><h2 class="product-title">LOGO 3D 10</h2><p class="product-price">Rp 5.000</p><a href="#" class="order-btn" onclick="orderProduct('LOGO 3D 10', 'Rp 5.000', 'https://files.catbox.moe/2xo29y.jpg')">Pesan Sekarang</a></div>
+        </div>
+      </div>
+      <button class="slider-btn slider-right" onclick="scrollAdditionalSlider(350)">&#10095;</button>
+    </div>
+
+    <footer><p>&copy; 2025 Logo Maskot 3D. All Rights Reserved.</p></footer>
+  </div>
+
+  <script>
+    // Loading screen
+    window.addEventListener('load', function() {
+      const loader = document.querySelector('.loader-wrapper');
+      loader.style.opacity = '0';
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500);
+      
+      // Create particles after page loads
+      createParticles();
+    });
+
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size between 1px and 3px
+        const size = Math.random() * 2 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100}vh`;
+        
+        // Random animation duration between 10s and 20s
+        const duration = Math.random() * 10 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        // Random opacity
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Fungsi untuk mengarahkan ke WhatsApp dengan pesan yang diformat
+    function orderProduct(productName, productPrice, productImageUrl) {
+      const phoneNumber = '6283844381838'; // Nomor WhatsApp Anda
+      const message = `ORDER LOGO : ${productName}\nHARGA : ${productPrice}\nCONTOH LOGO : ${productImageUrl}`;
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+      return false; // Mencegah default behavior dari link
+    }
+
+    // Fungsi untuk slider utama
+    const slider = document.getElementById('productSlider');
+    document.querySelector('.slider-left').addEventListener('click', () => {
+      slider.scrollBy({ left: -350, behavior: 'smooth' });
+    });
+    document.querySelector('.slider-right').addEventListener('click', () => {
+      slider.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+
+    // Fungsi untuk slider produk tambahan
+    const additionalSlider = document.getElementById('additionalProductSlider');
+    function scrollAdditionalSlider(amount) {
+      additionalSlider.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    // Fungsi untuk filter kategori
+    document.querySelectorAll('.catalog-item').forEach(item => {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('.catalog-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        const selected = this.getAttribute('data-category');
+        document.querySelectorAll('.product-card').forEach(card => {
+          const categories = card.getAttribute('data-category')?.split(' ') || [];
+          card.style.display = (selected === 'all' || categories.includes(selected)) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

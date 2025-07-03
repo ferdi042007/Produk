@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brexxy Offc - Toko Digital Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --accent: #0ea5e9;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --neon-blue: #00d9ff;
+            --transition: all 0.3s ease;
+            --card-bg: rgba(15, 23, 42, 0.6);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        /* Hero Section Styling */
+        .hero {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: rgba(15, 23, 42, 0.7);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(94, 234, 212, 0.1);
+            z-index: 2;
+            margin-bottom: 80px;
+        }
+        
+        /* Decorative Elements */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(15, 23, 42, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--secondary), var(--accent));
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+        
+        .hero h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--neon-blue), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #cbd5e1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Button Styling */
+        .cta-button {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-bottom: 50px;
+        }
+        
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6);
+        }
+        
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+        
+        /* Social Icons Styling */
+        .social-icons {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+        }
+        
+        .social-icon::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--neon-blue), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.4);
+        }
+        
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+        
+        .whatsapp:hover {
+            background: #25D366;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        .youtube:hover {
+            background: #FF0000;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+        
+        .instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4);
+        }
+        
+        /* Floating Arrow */
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+        
+        .floating i {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.7);
+        }
+        
+        /* Background Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            opacity: 0.5;
+            animation: particleAnim 15s infinite linear;
+        }
+        
+        @keyframes particleAnim {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-1000px) translateX(1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Fitur Brexxy Pedia Section */
+        .features-section {
+            max-width: 1200px;
+            width: 100%;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(to right, var(--neon-blue), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+        }
+        
+        .welcome-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            text-align: center;
+            border: 1px solid rgba(94, 234, 212, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--accent));
+        }
+        
+        .welcome-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .divider {
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--neon-blue), transparent);
+            margin: 40px auto;
+            opacity: 0.3;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(94, 234, 212, 0.15);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 217, 255, 0.25);
+            border-color: rgba(94, 234, 212, 0.3);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+            text-align: center;
+        }
+        
+        .feature-desc {
+            color: #cbd5e1;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        .login-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+            border: 1px solid rgba(94, 234, 212, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--accent));
+        }
+        
+        .login-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
+        }
+        
+        .login-desc {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+                margin-bottom: 50px;
+            }
+            
+            .hero h2 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .social-icons {
+                gap: 20px;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+            
+            .welcome-card, .login-section {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+            
+            .social-icons {
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+            
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+            
+            .login-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Brexxy Offc</h2>
+        <p>Selamat datang di toko digital Brexxy Offc! Kami menyediakan berbagai produk digital berkualitas tinggi untuk kebutuhan bisnis dan personal Anda. Dapatkan solusi terbaik dengan harga terjangkau.</p>
+        <button class="cta-button" onclick="window.location.href='products.html'">Lihat Produk</button>
+        
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://wa.me/6283844381838?text=halo%20bang%20brexxy" class="social-icon whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.youtube.com/@BrexyyOfficial" class="social-icon youtube" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.instagram.com/brexxy_offc" class="social-icon instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        
+        <div class="floating">
+            <i class="fas fa-arrow-down"></i>
+        </div>
+        
+        <!-- Background Particles -->
+        <div class="particles" id="particles"></div>
+    </section>
+
+    <!-- Fitur Brexxy Pedia Section -->
+    <section class="features-section">
+        <div class="welcome-card">
+            <h2 class="welcome-title">Selamat Datang di Brexxy Pedia</h2>
+            <p class="welcome-subtitle">Platform digital untuk top up, pembayaran, dan layanan otomatis lainnya dengan fitur terbaik</p>
+        </div>
+        
+        <h2 class="section-title">Fitur Brexxy Pedia</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3 class="feature-title">Fitur Otomatis Payment</h3>
+                <p class="feature-desc">Untuk Mempermudah Mencairkan Uang QRIS</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3 class="feature-title">Transfer Otomatis</h3>
+                <p class="feature-desc">Mengirim saldo dari BREXXY PEDIA Ke OVO, DANA, GoPay hanya dalam satu klik.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3 class="feature-title">Top Up Game Dan Top Up Pulsa</h3>
+                <p class="feature-desc">Bisa Langsung Top Up Game Dan Top Up Pulsa All Provider Melalui BREXXY PEDIA.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h3 class="feature-title">Pembayaran Token Listrik</h3>
+                <p class="feature-desc">Bisa Membayar Token Listrik Hanya Dengan BREXXY PEDIA</p>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="login-section">
+            <h3 class="login-title">Sistem Login</h3>
+            <p class="login-desc">Memperaman Akumnu Dan Saldomu</p>
+        </div>
+    </section>
+    
+    <div class="footer">
+        <p>© 2025 Brexxy Pedia. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Create background particles
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 10 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html>
